@@ -151,50 +151,7 @@ Services:
 - MongoDB: localhost:27017
 - Redis: localhost:6379
 
-## ☁️ Free Cloud Deployment
 
-### Option 1: Railway (Recommended)
-
-**Backend:**
-1. Push code to GitHub
-2. Visit [Railway](https://railway.app)
-3. Create new project from GitHub repo
-4. Add MongoDB and Redis plugins
-5. Set environment variables
-6. Deploy!
-
-**Frontend:**
-1. Visit [Vercel](https://vercel.com)
-2. Import GitHub repository
-3. Set build settings for `/client` directory
-4. Add environment variables
-5. Deploy!
-
-### Option 2: Render
-
-**Backend:**
-1. Visit [Render](https://render.com)
-2. Create new Web Service
-3. Connect GitHub repository
-4. Set build command: `cd server && npm install`
-5. Set start command: `cd server && node index.js`
-6. Add environment variables
-7. Deploy!
-
-**Frontend:**
-1. Create Static Site on Render
-2. Build command: `cd client && npm install && npm run build`
-3. Publish directory: `client/build`
-4. Deploy!
-
-### Free Cloud Services
-
-**MongoDB:**
-- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - 512MB free tier
-
-**Redis:**
-- [Redis Cloud](https://redis.com/try-free/) - 30MB free tier
-- [Upstash](https://upstash.com/) - 10,000 commands/day free
 
 ## 📁 Project Structure
 
