@@ -1,6 +1,6 @@
 # URL Shortener Pro 🚀
 
-A feature-rich, enterprise-grade URL shortener built with the MERN stack (MongoDB, Express, React, Node.js), Redis caching, and comprehensive analytics. Designed to impress FAANG/MAANG recruiters with production-ready code, scalable architecture, and modern best practices.
+A feature-rich, enterprise-grade URL shortener built with the MERN stack (MongoDB, Express, React, Node.js), Redis caching, and comprehensive analytics with production-ready code, scalable architecture, and modern best practices.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)
