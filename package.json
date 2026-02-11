@@ -1,0 +1,20 @@
+{
+  "name": "url-shortener-pro",
+  "version": "1.0.0",
+  "description": "Enterprise-grade URL shortener with analytics, caching, and rate limiting",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && nodemon index.js",
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install",
+    "start": "cd server && node index.js"
+  },
+  "keywords": ["url-shortener", "mern", "redis", "analytics"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

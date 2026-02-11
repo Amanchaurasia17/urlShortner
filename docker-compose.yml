@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7
+    container_name: url-shortener-db
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: url-shortener
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - url-shortener-network
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: url-shortener-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - url-shortener-network
+    command: redis-server --appendonly yes
+
+  # Backend Server
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: url-shortener-server
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - MONGODB_URI=mongodb://mongodb:27017/url-shortener
+      - REDIS_URL=redis://redis:6379
+      - BASE_URL=${BASE_URL:-http://localhost:3000}
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - url-shortener-network
+
+  # Frontend Client
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: url-shortener-client
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - server
+    networks:
+      - url-shortener-network
+
+volumes:
+  mongodb_data:
+  redis_data:
+
+networks:
+  url-shortener-network:
+    driver: bridge
